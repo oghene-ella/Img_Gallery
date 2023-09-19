@@ -1,4 +1,4 @@
-import Error from "../assets/error-page.svg";
+import Error from "../assets/error-page.webp";
 
 const NotFound = () => {
 	return (
@@ -12,7 +12,7 @@ const NotFound = () => {
 				<img src={Error} className="w-4/12" alt="reg" />
 				<a
 					href="/"
-					className="bg-my-pink text-white text-center px-2 py-4 w-6/12 font-semibold rounded-lg"
+					className="bg-blue-700 text-white text-center px-2 py-4 w-6/12 font-semibold rounded-lg"
 				>
 					Go back Home
 				</a>
