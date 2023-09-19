@@ -1,12 +1,21 @@
-import Login from "./pages/Login"
+import { Routes, Route} from "react-router-dom";
+
+import Login from "./pages/Login";
+import Home from "./pages/Homepage"
+import NotFound from "./pages/Notfound"
+import Authentication from "./components/authentication/LoginAuthentication"
+
 
 const App = () => {
-  return (
-    <>
-    <Login/>
-      {/* <h1 className="bg-purple-800 text-white text-7xl">Hello Ellahh!</h1> */}
-    </>
-  )
-}
+	return (
+		<Routes>
+			<Route path="/" element={<Login />} />
+			<Route path="/" element={<Authentication />}>
+				<Route path="/home" index element={<Home />} />
+			</Route>
+			<Route path="*" element={<NotFound />} />
+		</Routes>
+	);
+};
 
-export default App
+export default App;

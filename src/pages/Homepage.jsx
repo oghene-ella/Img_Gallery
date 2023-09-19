@@ -1,7 +1,9 @@
+import Home from "../components/Homepage/Home"
+
 const Homepage = () => {
   return (
     <section>
-        <h1>Homepage</h1>
+        <Home />
     </section>
   )
 }
