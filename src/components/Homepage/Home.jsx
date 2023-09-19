@@ -2,9 +2,10 @@ import LoginAuth from "../authentication/LoginAuthentication"
 
 const Home = () => {
   return (
-    <div>Home page!
+    <section>
+      <h1>Homepage!!!</h1>
       <LoginAuth />
-    </div>
+    </section>
   )
 }
 
