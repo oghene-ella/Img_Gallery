@@ -1,8 +1,8 @@
 import { Routes, Route} from "react-router-dom";
 
-import Login from "./pages/Login";
-import Home from "./pages/Homepage"
-import NotFound from "./pages/Notfound"
+import Login from "./pages/Login.jsx";
+import Home from "./pages/Homepage.jsx"
+import NotFound from "./pages/Notfound.jsx"
 // import Authentication from "./components/authentication/LoginAuthentication"
 
 
