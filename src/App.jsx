@@ -2,7 +2,7 @@ import { Routes, Route} from "react-router-dom";
 
 import Login from "./pages/Login.jsx";
 import Home from "./pages/Homepage.jsx"
-import NotFound from "./pages/Notfound.jsx"
+import NotFound from "./pages/NotFound.jsx"
 // import Authentication from "./components/authentication/LoginAuthentication"
 
 
