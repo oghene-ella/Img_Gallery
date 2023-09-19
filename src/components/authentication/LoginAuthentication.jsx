@@ -35,19 +35,24 @@ const LoginAuthentication = () => {
 	};
 
     return (
-		<section>
-			{authUser ? (
-				<>
-					<p>{`Logged In as ${authUser.email}`}</p>
-					<button onClick={userSignOut}>Sign Out</button>
-				</>
-			) : (
-				<>
-					<p>Logged Out</p>
-				</>
-			)}
-		</section>
-	);
+			<section>
+				{authUser ? (
+					<section className="flex flex-col items-center gap-5 font-mooli_sans">
+						<p className="text-base">{`Logged In as ${authUser.email}`}</p>
+						<button
+							onClick={userSignOut}
+							className="bg-blue-700 text-white px-4 py-2 w-1/2 rounded-lg"
+						>
+							Sign Out
+						</button>
+					</section>
+				) : (
+					<>
+						<p>Logged Out</p>
+					</>
+				)}
+			</section>
+		);
 }
 
 export default LoginAuthentication

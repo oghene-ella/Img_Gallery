@@ -16,6 +16,12 @@ const Login = () => {
 
 	const logIn = (e) => {
 		e.preventDefault();
+
+		if (!username || !password) {
+			setErrorMessage("Please enter both username and password.");
+			return;
+		}
+		
 		signInWithEmailAndPassword(auth, username, password)
 			.then((userInfo) => {
 				console.log(userInfo)
@@ -24,10 +30,10 @@ const Login = () => {
 			.catch((error) => {
 				console.log(error)
 				navigate("/");
-				setErrorMessage("Oops! Wrong Username or Password!");
+				setErrorMessage("Oops! Wrong Details! Try Again!");
 			})
-
 	}
+
 	return (
 		<section className="w-screen h-screen flex gap-5 font-mooli_sans justify-center">
 			<section className="sm:w-5/6 lg:w-1/2 flex flex-col items-center p-5 justify-center gap-10">
