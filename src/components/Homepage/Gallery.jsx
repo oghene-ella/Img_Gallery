@@ -1,13 +1,24 @@
+import dummy_img from "../../assets/login-img.webp"
+
 const Gallery = () => {
   return (
-		<section className="border border-green-600 w-11/12 flex mx-auto h-4/5">
-			<main className="w-full border border-blue-600 grid grid-cols-3 gap-4">
-				<section className="border border-red-500"></section>
-				<section className="border border-red-500"></section>
-				<section className="border border-red-500"></section>
-				<section className="border border-red-500"></section>
-				<section className="border border-red-500"></section>
-				<section className="border border-red-500"></section>
+		<section className="w-10/12 flex mx-auto h-fit">
+			<main className="w-full grid grid-cols-3 gap-y-11 gap-x-5 ">
+				{/* image gallery */}
+				<section className="border border-red-500 rounded-3xl flex flex-col gap-3">
+					{/* image  */}
+					<img src={dummy_img} className="rounded-3xl" />
+
+					{/* the author name and profile */}
+					<span className="flex items-center gap-2">
+						<img src={dummy_img} className="rounded-full w-10" />
+						<span className="flex gap-2">
+							<h1>Author -</h1>
+							<h2>Ellahhhh Karo</h2>
+						</span>
+					</span>
+				</section>
+        
 			</main>
 		</section>
 	);
