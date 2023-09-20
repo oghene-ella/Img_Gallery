@@ -1,27 +1,55 @@
-import dummy_img from "../../assets/login-img.webp"
+import { useEffect, useState } from "react";
+import galleryData from "../data";
+import loader from "../../assets/ZKZg.gif";
 
 const Gallery = () => {
-  return (
-		<section className="w-10/12 flex mx-auto h-fit">
-			<main className="w-full grid grid-cols-3 gap-y-11 gap-x-5 ">
-				{/* image gallery */}
-				<section className="border border-red-500 rounded-3xl flex flex-col gap-3">
-					{/* image  */}
-					<img src={dummy_img} className="rounded-3xl" />
+	const [loading, setLoading] = useState(true);
 
-					{/* the author name and profile */}
-					<span className="flex items-center gap-2">
-						<img src={dummy_img} className="rounded-full w-10" />
-						<span className="flex gap-2">
-							<h1>Author -</h1>
-							<h2>Ellahhhh Karo</h2>
-						</span>
-					</span>
-				</section>
-        
-			</main>
+	useEffect(() => {
+		setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+	}, []);
+
+	return (
+		<section className="w-10/12 flex mx-auto h-fit">
+			{loading ? (
+        <img src={loader} className="mx-auto w-1/2" />
+			) : (
+				<main className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+					{/* image gallery */}
+					{galleryData.map((item) => (
+						<section
+							className="rounded-2xl flex flex-col shadow-2xl bg-white cursor-pointer transition duration-1000 ease-in-out transform hover:-translate-y-1 hover:scale-95"
+							key={item.id}
+						>
+							{/* image  */}
+							<img
+								src={item.url}
+								className="rounded-t-2xl h-3/4 bg-cover"
+								alt={item.alt}
+							/>
+
+							{/* the author name and profile */}
+							<span className="flex flex-col gap-5 px-5 py-4">
+								<p className="px-5 bg-blue-600 text-white w-fit rounded-sm">
+									{item.title}
+								</p>
+								<span className="flex items-center gap-5">
+									<img
+										src={item.profile}
+										className="rounded-full w-10"
+										alt={item.alt}
+									/>
+									<h2>{item.creator}</h2>
+								</span>
+							</span>
+						</section>
+					))}
+				</main>
+			)}
 		</section>
 	);
-}
+};
 
-export default Gallery
+export default Gallery;
