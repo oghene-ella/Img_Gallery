@@ -9,6 +9,9 @@ const Home = () => {
 				<section className="h-4/5 flex flex-col justify-center gap-14">
 					<SearchBar />
 					<Gallery />
+					<p className="text-xl text-center text-gray-700">
+						Drag and drop these items in any position +
+					</p>
 				</section>
 				<LoginAuth />
 			</main>
