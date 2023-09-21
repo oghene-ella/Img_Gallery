@@ -14,8 +14,8 @@ const Gallery = () => {
 	return (
 		<section className="w-10/12 flex mx-auto h-fit">
 			{loading ? (
-        <img src={loader} className="mx-auto w-1/2" />
-			) : (
+			<img src={loader} className="w-1/3 mx-auto" />
+				) : (
 				<main className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 					{/* image gallery */}
 					{galleryData.map((item) => (
