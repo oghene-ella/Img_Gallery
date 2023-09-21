@@ -1,31 +1,35 @@
 import { useEffect, useState, useRef } from "react";
 import galleryData from "../data";
 import loader from "../../assets/ZKZg.gif";
+import SearchBar from "../searchBar/Searchbar";
 
 const Gallery = () => {
+	const [, setSearchTerm] = useState("");
+
+	// use state fo image loader
 	const [loading, setLoading] = useState(true);
 	const [images, setImages] = useState(galleryData);
 
-	const dragItem = useRef();
-	const dragOverItem = useRef();
-
+	// drag and drop functionality
+	const dragCard = useRef();
+	const dragOverCard = useRef();
 
 	const dragStart = (e, position) => {
-		dragItem.current = position;
+		dragCard.current = position;
 	};
 
 	const dragEnter = (e, position) => {
-		dragOverItem.current = position;
+		dragOverCard.current = position;
 	};
 
 	const drop = () => {
-		const copyImage = [...images];
-		const dragItemContent = copyImage[dragItem.current];
-		copyImage.splice(dragItem.current, 1);
-		copyImage.splice(dragOverItem.current, 0, dragItemContent);
-		dragItem.current = null;
-		dragOverItem.current = null;
-		setImages(copyImage);
+		const getCard = [...images];
+		const dragCardContent = getCard[dragCard.current];
+		getCard.splice(dragCard.current, 1);
+		getCard.splice(dragOverCard.current, 0, dragCardContent);
+		dragCard.current = null;
+		dragOverCard.current = null;
+		setImages(getCard);
 	};
 
 	useEffect(() => {
@@ -34,8 +38,25 @@ const Gallery = () => {
 		}, 2000);
 	}, []);
 
+
+	const handleSearch = (searchQuery) => {
+		setSearchTerm(searchQuery);
+		if (searchQuery.trim() === "") {
+			setImages(images);
+		} else {
+			setImages(filterCardsByCreators(searchQuery));
+		}
+	};
+
+	const filterCardsByCreators = (creator) => {
+		return images.filter((card) =>
+			card.creator.toLowerCase().includes(creator.toLowerCase()),
+		);
+	};
+
 	return (
-		<section className="w-10/12 flex mx-auto h-fit">
+		<section className="w-10/12 flex flex-col gap-14 mx-auto h-fit">
+			<SearchBar onSearch={handleSearch} />
 			{loading ? (
 				<img src={loader} className="w-1/3 mx-auto" />
 			) : (
