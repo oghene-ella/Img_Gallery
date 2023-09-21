@@ -58,6 +58,7 @@ While adhering to the above requirements, you have the creative freedom to come 
 
 1. Start the server: `npm run dev`
 2. Access the app in your web browser at `http://localhost:5173/`
+3. Fill in the necessary login details (email and password)
 
 ## Contact
 
