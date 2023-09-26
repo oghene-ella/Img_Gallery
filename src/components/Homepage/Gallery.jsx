@@ -4,7 +4,7 @@ import loader from "../../assets/ZKZg.gif";
 import SearchBar from "../searchBar/Searchbar";
 
 const Gallery = () => {
-	const [, setSearchTerm] = useState("");
+	const [searchTerm, setSearchTerm] = useState("");
 
 	// use state fo image loader
 	const [loading, setLoading] = useState(true);
@@ -39,18 +39,13 @@ const Gallery = () => {
 	}, []);
 
 
-	const handleSearch = (searchQuery) => {
-		setSearchTerm(searchQuery);
-		if (searchQuery.trim() === "") {
-			setImages(images);
-		} else {
-			setImages(filterCardsByCreators(searchQuery));
-		}
+	const handleSearch = (event) => {
+		setSearchTerm(event.target.value);
 	};
 
-	const filterCardsByCreators = (creator) => {
+	const filterCardsByCreators = () => {
 		return images.filter((card) =>
-			card.creator.toLowerCase().includes(creator.toLowerCase()),
+			card.creator.toLowerCase().includes(searchTerm.trim().toLowerCase()),
 		);
 	};
 
@@ -63,7 +58,7 @@ const Gallery = () => {
 				<main className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 					{/* image gallery */}
 					{images &&
-						images.map((item, index) => (
+						filterCardsByCreators().map((item, index) => (
 							<section
 								className="rounded-2xl flex flex-col shadow-2xl bg-white cursor-pointer transition duration-1000 ease-in-out transform hover:-translate-y-1 hover:scale-95"
 								key={item.id}
